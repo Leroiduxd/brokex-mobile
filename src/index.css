@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './styles/mobile.css';
+
+/* Trading App Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    
+    /* Trading Colors */
+    --long: 218 91% 53%;      /* Blue #0F62FE */
+    --long-foreground: 0 0% 100%;
+    --short: 0 72% 51%;       /* Red #DC2626 */
+    --short-foreground: 0 0% 100%;
+    
+    /* Trading Variants */
+    --long-hover: 218 91% 48%;
+    --short-hover: 0 72% 46%;
+    --long-muted: 218 91% 53% / 0.1;
+    --short-muted: 0 72% 51% / 0.1;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 6%;        /* #0b0b0c */
+    --foreground: 240 5% 94%;     /* #eaeaf0 */
+    
+    /* Trading Colors Dark */
+    --long: 218 91% 53%;          /* Same blue */
+    --long-foreground: 0 0% 100%;
+    --short: 0 72% 51%;           /* Same red */
+    --short-foreground: 0 0% 100%;
+    
+    /* Trading Variants Dark */
+    --long-hover: 218 91% 58%;
+    --short-hover: 0 72% 56%;
+    --long-muted: 218 91% 53% / 0.15;
+    --short-muted: 0 72% 51% / 0.15;
+
+    --card: 0 0% 8%;              /* Dark cards */
+    --card-foreground: 240 5% 94%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 240 5% 94%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+    background-color: #0b0f1a;
+  }
+
+  /* Global overlay styles */
+  .overlay-portal {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm;
+  }
+
+  /* Bottom sheet styles */
+  .sheet-overlay {
+    @apply fixed inset-0 z-40 bg-black/50;
+  }
+
+  .sheet-content {
+    @apply fixed bottom-0 left-0 right-0 z-50 mx-auto max-w-md rounded-t-3xl bg-card shadow-2xl;
+    height: 94vh;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .sheet-content.open {
+    transform: translateY(0);
+  }
+
+  /* Body scroll lock */
+  .body-scroll-locked {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+}

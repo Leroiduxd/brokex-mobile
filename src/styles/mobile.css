@@ -1,0 +1,126 @@
+/* Optimisations mobiles pour le trading dashboard */
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  /* Amélioration de la lisibilité sur mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Navigation tabs plus compacte */
+  .trading-tabs {
+    font-size: 0.875rem;
+  }
+
+  /* Cards plus compactes sur mobile */
+  .trading-card {
+    padding: 0.75rem;
+  }
+
+  /* Tables responsive */
+  .trading-table {
+    font-size: 0.875rem;
+  }
+
+  .trading-table th,
+  .trading-table td {
+    padding: 0.5rem 0.25rem;
+  }
+
+  /* Boutons plus grands pour le touch */
+  .mobile-button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Header compact sur mobile */
+  .mobile-header {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Stats grid responsive */
+  .stats-grid {
+    gap: 0.75rem;
+  }
+
+  /* Text truncation pour éviter l'overflow */
+  .truncate-mobile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px;
+  }
+}
+
+/* Optimisations pour très petits écrans */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .trading-card {
+    padding: 0.5rem;
+  }
+
+  .mobile-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .truncate-mobile {
+    max-width: 80px;
+  }
+}
+
+/* Safe area pour les devices avec notch */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Touch improvements */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prevent zoom on input focus (iOS) */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+/* Improved scroll behavior */
+.mobile-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Hide scrollbars on mobile */
+@media (max-width: 768px) {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
