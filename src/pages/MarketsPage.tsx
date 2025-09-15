@@ -8,6 +8,7 @@ import { useUIStore } from '@/store/ui';
 import { TradeSheet } from '@/components/TradeSheetSimple';
 import { cn } from '@/lib/utils';
 import { formatPrice, formatPercentage } from '@/lib/contracts';
+import { Sparkline } from '@/components/Sparkline';
 
 import type { Asset } from '@/types/trading';
 
@@ -181,7 +182,7 @@ export function MarketsPage() {
                 onClick={() => handleAssetClick(asset)}
                 className="w-full p-4 bg-card border border-border rounded-xl hover:bg-card/80 transition-colors text-left"
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div>
@@ -192,6 +193,8 @@ export function MarketsPage() {
                       </div>
                     </div>
                   </div>
+                  {/* Mini chart per asset */}
+                  <Sparkline pairId={asset.id} width={120} height={36} />
                   
                   <div className="text-right">
                     <div className="text-lg font-semibold">
@@ -211,13 +214,6 @@ export function MarketsPage() {
                   </div>
                 </div>
                 
-                <div className="flex justify-between text-xs text-muted-foreground mt-2 pt-2 border-t border-border/50">
-                  <span>H: {formatPrice(asset.high24h)}</span>
-                  <span>L: {formatPrice(asset.low24h)}</span>
-                  {asset.timestamp && (
-                    <span>{asset.timestamp}</span>
-                  )}
-                </div>
               </button>
             ))
           )}
