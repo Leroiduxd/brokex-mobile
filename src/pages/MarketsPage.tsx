@@ -182,26 +182,29 @@ export function MarketsPage() {
                 onClick={() => handleAssetClick(asset)}
                 className="w-full p-4 bg-card border border-border rounded-xl hover:bg-card/80 transition-colors text-left"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <div>
-                        <h3 className="font-semibold text-lg">{asset.pair}</h3>
+                <div className="flex items-center justify-between gap-2 sm:gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="min-w-0">
+                        <h3 className="font-semibold text-base sm:text-lg truncate">{asset.pair}</h3>
                         {asset.name && (
-                          <p className="text-sm text-muted-foreground">{asset.name}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground truncate">{asset.name}</p>
                         )}
                       </div>
                     </div>
                   </div>
-                  {/* Mini chart per asset */}
-                  <Sparkline pairId={asset.id} width={120} height={36} />
                   
-                  <div className="text-right">
-                    <div className="text-lg font-semibold">
+                  {/* Mini chart per asset - responsive width */}
+                  <div className="flex-shrink-0">
+                    <Sparkline pairId={asset.id} width={80} height={32} />
+                  </div>
+                  
+                  <div className="text-right flex-shrink-0 min-w-0">
+                    <div className="text-sm sm:text-lg font-semibold">
                       {formatPrice(asset.price)}
                     </div>
                     <div className={cn(
-                      "text-sm font-medium flex items-center justify-end gap-1",
+                      "text-xs sm:text-sm font-medium flex items-center justify-end gap-1",
                       asset.changePct24h >= 0 ? "text-long" : "text-short"
                     )}>
                       {asset.changePct24h >= 0 ? (
@@ -209,7 +212,7 @@ export function MarketsPage() {
                       ) : (
                         <TrendingDown className="w-3 h-3" />
                       )}
-                      {formatPercentage(asset.changePct24h)}
+                      <span className="truncate">{formatPercentage(asset.changePct24h)}</span>
                     </div>
                   </div>
                 </div>
